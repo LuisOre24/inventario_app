@@ -1,0 +1,75 @@
+{% extends 'layouts/main.html' %}
+
+{% block content %}
+
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-md-1 order-last">
+                        <h3>Title</h3>
+                    </div>
+                    <div class="col-12 col-md-6 order-md-2 order-first">
+                        <a href="{% url 'equipo:create_equipo' %}" class="btn btn-primary">Crear</a>
+                    </div>
+                </div>
+            </h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-lg">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre Equipo</th>
+                            <th>Procesador</th>
+                            <th>RAM</th>
+                            <th>Almacenamiento</th>
+                            <th>Monitor</th>
+                            <th>Teclado</th>
+                            <th>Mouse</th>
+                            <th>Printer 1</th>
+                            <th>Printer 2</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for equipo in equipos %}
+                            <tr>
+                                <td class="text-bold-500">
+                                    {{forloop.counter}}
+                                </td>
+                                <td class="text-bold-500">{{ equipo.nombre }}</td>
+                                <td class="text-bold-500">{{ equipo.procesador }}</td>
+                                <td class="text-bold-500">{{ equipo.ram }}</td>
+                                <td class="text-bold-500">{{ equipo.almacenamiento }}</td>
+                                <td class="text-bold-500">{{ equipo.monitor }}</td>
+                                <td class="text-bold-500">{{ equipo.teclado }}</td>
+                                <td class="text-bold-500">{{ equipo.mouse }}</td>
+                                <td class="text-bold-500">{{ equipo.printer1 }}</td>
+                                <td class="text-bold-500">{{ equipo.printer2 }}</td>
+                                <td class="text-bold-500">{{ equipo.estado }}</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="{% url 'equipo:update_equipo' equipo.id %}" class="btn btn-warning">Actualizar</a>
+                                        <a href="{% url 'equipo:delete_equipo' equipo.id %}" class="btn btn-danger">Cam. Estado</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td class="text-center" colspan="12">
+                                    No hay elementos registrados
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

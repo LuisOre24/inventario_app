@@ -1,0 +1,10 @@
+
+SECRET_KEY='django-insecure-!2%a^-&wc%m*i#w()t^mf7(%*_ew37_oby-m142blayj!)kc(b'
+DEBUG=True
+TIME_ZONE='America/Lima'
+
+DB_NAME="inventario_db"
+DB_USER="postgres"
+DB_PASS="root"
+DB_HOST="localhost"
+DB_PORT="5432"

@@ -22,6 +22,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th>Sede - Area</th>
                             <th>Nombre Equipo</th>
                             <th>Procesador</th>
                             <th>RAM</th>
@@ -41,6 +42,7 @@
                                 <td class="text-bold-500">
                                     {{forloop.counter}}
                                 </td>
+                                <td class="text-bold-500">{{ equipo.sede }}-{{equipo.area}}</td>
                                 <td class="text-bold-500">{{ equipo.nombre }}</td>
                                 <td class="text-bold-500">{{ equipo.procesador }}</td>
                                 <td class="text-bold-500">{{ equipo.ram }}</td>
@@ -50,9 +52,13 @@
                                 <td class="text-bold-500">{{ equipo.mouse }}</td>
                                 <td class="text-bold-500">{{ equipo.printer1 }}</td>
                                 <td class="text-bold-500">{{ equipo.printer2 }}</td>
-                                <td class="text-bold-500">{{ equipo.estado }}</td>
+                                {% if equipo.estado %}
+                                    <td class="badge bg-success">OK</td >
+                                    {% else %} 
+                                    <td class="badge bg-danger">INOPERATIVO</td >
+                                {% endif %}
                                 <td>
-                                    <div class="btn-group" role="group">
+                                    <div class="btn-group mb-3" role="group">
                                         <a href="{% url 'equipo:update_equipo' equipo.id %}" class="btn btn-warning">Actualizar</a>
                                         <a href="{% url 'equipo:delete_equipo' equipo.id %}" class="btn btn-danger">Cam. Estado</a>
                                     </div>
@@ -60,7 +66,7 @@
                             </tr>
                         {% empty %}
                             <tr>
-                                <td class="text-center" colspan="12">
+                                <td class="text-center" colspan="13">
                                     No hay elementos registrados
                                 </td>
                             </tr>
